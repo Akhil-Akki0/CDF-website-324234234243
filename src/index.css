@@ -1,0 +1,256 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --color-aerofoil: #0284c7;
+  --color-dynamic-cyan: #0284c7;
+  --color-supersonic-violet: #7c3aed;
+  --color-laminar-emerald: #059669;
+  --color-thermal-amber: #d97706;
+  --color-stagnation-crimson: #e11d48;
+}
+
+@layer base {
+  * {
+    border-color: #cbd5e1;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html, body, #root {
+    min-height: 100%;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    line-height: 1.55;
+    background: #f8fafc;
+    color: #0f172a;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  html.dark body {
+    background: #020617;
+    color: #f8fafc;
+  }
+
+  button:focus-visible,
+  a:focus-visible,
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible {
+    outline: 3px solid #0284c7;
+    outline-offset: 2px;
+  }
+
+  button, a {
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  input, select, textarea {
+    font-size: 16px;
+  }
+
+  @media (min-width: 640px) {
+    input, select, textarea {
+      font-size: inherit;
+    }
+  }
+}
+
+.pt-safe { padding-top: env(safe-area-inset-top, 0px); }
+.pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); }
+.pl-safe { padding-left: env(safe-area-inset-left, 0px); }
+.pr-safe { padding-right: env(safe-area-inset-right, 0px); }
+
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(148, 163, 184, 0.45); border-radius: 9999px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(100, 116, 139, 0.7); }
+
+/* Dynamic Bright Light Themes */
+.theme-bg-sky-aero {
+  background: linear-gradient(135deg, rgba(186, 230, 253, 0.45) 0%, rgba(224, 242, 254, 0.3) 50%, rgba(207, 250, 254, 0.4) 100%);
+}
+
+.theme-bg-electric-azure {
+  background: linear-gradient(135deg, rgba(125, 211, 252, 0.5) 0%, rgba(186, 230, 253, 0.35) 50%, rgba(165, 243, 252, 0.45) 100%);
+}
+
+.theme-bg-solar-amber {
+  background: linear-gradient(135deg, rgba(254, 243, 199, 0.6) 0%, rgba(253, 230, 138, 0.45) 50%, rgba(254, 215, 170, 0.5) 100%);
+}
+
+.theme-bg-radiant-coral {
+  background: linear-gradient(135deg, rgba(255, 228, 230, 0.6) 0%, rgba(254, 205, 211, 0.45) 50%, rgba(254, 215, 170, 0.5) 100%);
+}
+
+.theme-bg-aurora-emerald {
+  background: linear-gradient(135deg, rgba(209, 250, 229, 0.55) 0%, rgba(167, 243, 208, 0.4) 50%, rgba(153, 246, 228, 0.45) 100%);
+}
+
+.theme-bg-lavender-breeze {
+  background: linear-gradient(135deg, rgba(237, 233, 254, 0.6) 0%, rgba(221, 214, 254, 0.45) 50%, rgba(199, 210, 254, 0.5) 100%);
+}
+
+.dark .theme-bg-sky-aero,
+.dark .theme-bg-electric-azure,
+.dark .theme-bg-solar-amber,
+.dark .theme-bg-radiant-coral,
+.dark .theme-bg-aurora-emerald,
+.dark .theme-bg-lavender-breeze {
+  background: #020617;
+}
+
+/* ========================================================================== */
+/* UNIVERSAL AEROSPACE GLASSMORPHISM ACROSS EVERY PAGE & COMPONENT           */
+/* ========================================================================== */
+
+/* Main Surface Glassmorphism */
+.glass-surface,
+.card-bright,
+.glass-panel {
+  background: rgba(255, 255, 255, 0.72) !important;
+  border: 1px solid rgba(255, 255, 255, 0.75) !important;
+  backdrop-filter: blur(24px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07), inset 0 1px 1px 0 rgba(255, 255, 255, 0.85) !important;
+}
+
+.dark .glass-surface,
+.dark .card-bright,
+.dark .glass-panel {
+  background: rgba(15, 23, 42, 0.72) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  backdrop-filter: blur(24px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(180%) !important;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.45), inset 0 1px 1px 0 rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Left Sidebar Specialized Glassmorphism */
+.glass-sidebar {
+  background: rgba(255, 255, 255, 0.65) !important;
+  backdrop-filter: blur(28px) saturate(190%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(190%) !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.65) !important;
+  box-shadow: 4px 0 24px 0 rgba(15, 23, 42, 0.05), inset -1px 0 1px 0 rgba(255, 255, 255, 0.6) !important;
+  transition: width 0.42s cubic-bezier(0.22, 1, 0.36, 1),
+              background-color 0.35s ease,
+              border-color 0.35s ease,
+              box-shadow 0.35s ease !important;
+}
+
+.dark .glass-sidebar {
+  background: rgba(2, 6, 23, 0.72) !important;
+  backdrop-filter: blur(28px) saturate(190%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(190%) !important;
+  border-right: 1px solid rgba(255, 255, 255, 0.1) !important;
+  box-shadow: 4px 0 28px 0 rgba(0, 0, 0, 0.45), inset -1px 0 1px 0 rgba(255, 255, 255, 0.05) !important;
+}
+
+/* Glass Interactive Buttons & Tabs - Smooth In & Out Transitions */
+.glass-item {
+  background: rgba(255, 255, 255, 0.48) !important;
+  border: 1px solid rgba(255, 255, 255, 0.7) !important;
+  backdrop-filter: blur(16px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04), inset 0 1px 1px rgba(255, 255, 255, 0.75) !important;
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+              background-color 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+              color 0.22s ease !important;
+  will-change: transform, opacity;
+}
+
+.glass-item:hover {
+  background: rgba(255, 255, 255, 0.88) !important;
+  border-color: rgba(255, 255, 255, 0.95) !important;
+  box-shadow: 0 6px 16px rgba(15, 23, 42, 0.09), inset 0 1px 1px rgba(255, 255, 255, 0.95) !important;
+  transform: translateX(3px) scale(1.01);
+}
+
+.glass-item:active {
+  transform: translateX(1px) scale(0.985);
+}
+
+.dark .glass-item {
+  background: rgba(30, 41, 59, 0.48) !important;
+  border: 1px solid rgba(255, 255, 255, 0.1) !important;
+  backdrop-filter: blur(16px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(180%) !important;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2), inset 0 1px 1px rgba(255, 255, 255, 0.06) !important;
+}
+
+.dark .glass-item:hover {
+  background: rgba(30, 41, 59, 0.85) !important;
+  border-color: rgba(255, 255, 255, 0.22) !important;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.38), inset 0 1px 1px rgba(255, 255, 255, 0.14) !important;
+  transform: translateX(3px) scale(1.01);
+}
+
+.dark .glass-item:active {
+  transform: translateX(1px) scale(0.985);
+}
+
+.glass-item-active {
+  background: rgba(255, 255, 255, 0.92) !important;
+  border: 1px solid rgba(255, 255, 255, 0.98) !important;
+  backdrop-filter: blur(20px) saturate(200%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(200%) !important;
+  box-shadow: 0 6px 18px rgba(2, 132, 199, 0.18), inset 0 1px 1px rgba(255, 255, 255, 0.98) !important;
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+              background-color 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+              border-color 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+              box-shadow 0.28s cubic-bezier(0.22, 1, 0.36, 1) !important;
+  will-change: transform, opacity;
+}
+
+.glass-item-active:hover {
+  transform: translateX(3px) scale(1.01);
+}
+
+.dark .glass-item-active {
+  background: rgba(30, 41, 59, 0.92) !important;
+  border: 1px solid rgba(255, 255, 255, 0.24) !important;
+  backdrop-filter: blur(20px) saturate(200%) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(200%) !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.55), inset 0 1px 1px rgba(255, 255, 255, 0.15) !important;
+}
+
+/* Glass Cards and Form Inputs throughout every page */
+.glass-card,
+main section,
+main .rounded-2xl,
+main .rounded-xl,
+main .rounded-3xl {
+  backdrop-filter: blur(18px) saturate(170%);
+  -webkit-backdrop-filter: blur(18px) saturate(170%);
+}
+
+/* Frosted glass for inputs and selects */
+input, select, textarea {
+  background-color: rgba(255, 255, 255, 0.65) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border-color: rgba(203, 213, 225, 0.8) !important;
+}
+
+.dark input, .dark select, .dark textarea {
+  background-color: rgba(15, 23, 42, 0.65) !important;
+  border-color: rgba(255, 255, 255, 0.12) !important;
+}
+
+@keyframes loading-progress {
+  0% { transform: translateX(-110%); }
+  100% { transform: translateX(220%); }
+}
